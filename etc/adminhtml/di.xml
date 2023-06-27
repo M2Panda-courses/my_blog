@@ -11,7 +11,7 @@
     <virtualType name="Panda\Blog\Model\ResourceModel\Post\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">panda_blog_post</argument>
-            <argument name="resourceModel" xsi:type="string">Panda\Blog\Model\ResourceModel\Posts</argument>
+            <argument name="resourceModel" xsi:type="string">Panda\Blog\Model\ResourceModel\Post</argument>
         </arguments>
     </virtualType>
 </config>
