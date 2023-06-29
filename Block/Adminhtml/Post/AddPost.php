@@ -23,7 +23,7 @@ class AddPost extends \Magento\Backend\Block\Widget\Form\Container
         $this->_blockGroup = 'Panda_Blog';
         $this->_controller = 'adminhtml_post';
         parent::_construct();
-        if ($this->_isAllowedAction('Panda_Blog::add_row')) {
+        if ($this->_isAllowedAction('Panda_Blog::add_post')) {
             $this->buttonList->update('save', 'label', __('Save'));
         } else {
             $this->buttonList->remove('save');
