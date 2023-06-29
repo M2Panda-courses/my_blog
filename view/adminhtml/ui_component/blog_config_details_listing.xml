@@ -5,10 +5,18 @@
             <item name="provider" xsi:type="string">
                 blog_config_details_listing.blog_details_listing_data_source
             </item>
-            <item name="deps" xsi:type="string">blog_config_details_listing.blog_details_listing_data_source
+                <item name="deps" xsi:type="string">blog_config_details_listing.blog_details_listing_data_source
             </item>
         </item>
         <item name="spinner" xsi:type="string">spinner_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add New Post</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">blog/post/new</item>
+            </item>
+        </item>
     </argument>
     <listingToolbar name="listing_top">
         <argument name="data" xsi:type="array">
@@ -30,7 +38,11 @@
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">delete</item>
                         <item name="label" xsi:type="string" translate="true">Delete</item>
-                        <item name="url" xsi:type="url" path="blog/blog/delete"/>
+                        <item name="url" xsi:type="url" path="blog/post/massDelete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete Post</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>
+                        </item>
                     </item>
                 </argument>
             </action>
@@ -56,6 +68,20 @@
         </argument>
     </dataSource>
     <columns name="spinner_columns">
+<!--    TODO: розібратися шо це і для чого (або видалити)    -->
+<!--        <settings>-->
+<!--            <childDefaults>-->
+<!--                <param name="fieldAction" xsi:type="array">-->
+<!--                    <item name="provider" xsi:type="string">blog_details_listing.blog_listing.blog_columns.actions</item>-->
+<!--                    <item name="target" xsi:type="string">applyAction</item>-->
+<!--                    <item name="params" xsi:type="array">-->
+<!--                        <item name="0" xsi:type="string">edit</item>-->
+<!--                        <item name="1" xsi:type="string">${ $.$data.rowIndex }</item>-->
+<!--                    </item>-->
+<!--                </param>-->
+<!--            </childDefaults>-->
+<!--        </settings>-->
+<!---->
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -110,6 +136,15 @@
                 </item>
             </argument>
         </column>
+        <actionsColumn name="actions" class="Panda\Blog\Ui\Component\Listing\Columns\BlogActions">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">55</item>
+                    <item name="indexField" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </actionsColumn>
     </columns>
     <listingToolbar>
         <paging name="listing_paging"/>

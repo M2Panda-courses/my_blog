@@ -11,6 +11,7 @@
         <column xsi:type="text" name="thumbnail" nullable="false" comment="thumbnail"/>
         <column xsi:type="text" name="categories" nullable="false" comment="categories"/>
         <column xsi:type="text" name="tags" nullable="false" comment="tags"/>
+        <column xsi:type="text" name="short_text" nullable="false" comment="short_text"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="id"/>
         </constraint>
