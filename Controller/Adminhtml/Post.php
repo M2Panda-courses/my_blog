@@ -6,7 +6,7 @@ namespace Panda\Blog\Controller\Adminhtml;
 use Magento\Backend\App\Action;
 
 /**
- * Catalog product controller
+ * Blog post controller
  *
  * @api
  *

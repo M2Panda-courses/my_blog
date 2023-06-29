@@ -50,7 +50,7 @@ class Builder
     ) {
         $this->postFactory = $postFactory;
         $this->logger = $logger;
-        $this->$postRepository = $postRepository ?: \Magento\Framework\App\ObjectManager::getInstance()
+        $this->postRepository = $postRepository ?: \Magento\Framework\App\ObjectManager::getInstance()
             ->get(PostRepositoryInterface::class);
     }
 
@@ -68,7 +68,7 @@ class Builder
 
         if ($postId) {
             try {
-                $post = $this->postRepository->getById($postId, true);
+                $post = $this->postRepository->getById($postId);
 
             } catch (\Exception $e) {
                 echo $e->getMessage();

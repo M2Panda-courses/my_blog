@@ -106,6 +106,6 @@ class MassDelete extends Post implements HttpPostActionInterface
             );
         }
 
-        return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('catalog/*/index');
+        return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('blog/config/details');
     }
 }
