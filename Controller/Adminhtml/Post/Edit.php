@@ -10,7 +10,7 @@ use Magento\Framework\App\ObjectManager;
  */
 class Edit extends \Panda\Blog\Controller\Adminhtml\Post implements HttpGetActionInterface
 {
-    private const PAGE_TITLE = 'Post';
+    private const PAGE_TITLE = 'Edit Post';
 
     /**
      * Array of actions which can be processed without secret key validation

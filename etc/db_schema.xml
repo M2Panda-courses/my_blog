@@ -4,7 +4,7 @@
     <table name="panda_blog_post" resource="default" engine="innodb" comment="Post table">
         <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true"
                 comment="ID"/>
-        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+        <column xsi:type="timestamp" name="publish_date" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
                 comment="Creation Time"/>
         <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Title"/>
         <column xsi:type="mediumtext" name="content" nullable="true" comment="Post Content"/>

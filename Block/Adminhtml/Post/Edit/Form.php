@@ -44,9 +44,11 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
     protected function _prepareForm()
     {
         $dateFormat = $this->_localeDate->getDateFormat(\IntlDateFormatter::SHORT);
-        $model = $this->_coreRegistry->registry('post_data');
+        $postId = $this->getRequest()->getParam('id');
+        $post = $this->postFactory->create();
 
-        $model = $this->postFactory->create();
+
+
         $form = $this->_formFactory->create(
             ['data' => [
                 'id' => 'edit_form',
@@ -58,13 +60,17 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         );
         $form->setHtmlIdPrefix('panda_');
 
-        if(!$model->getId()) {
+
+
+
+        if(!$postId) {
             $fieldset = $form->addFieldset(
                 'base_fieldset',
                 ['legend' => __('Add Post Data'), 'class' => 'fieldset-wide']
             );
         } else {
             try {
+                $post->load($postId);
                 $fieldset = $form->addFieldset(
                     'base_fieldset',
                     ['legend' => __('Edit Post Data'), 'class' => 'fieldset-wide']
@@ -157,8 +163,19 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'style' => 'width:200px',
             ]
         );
+        $fieldset->addField(
+            'id',
+            'hidden',
+            [
+                'name' => 'id',
+                'label' => __('Id'),
+                'id' => 'id',
+                'title' => __('Id'),
+            ]
+        );
 
-        $form->setValues($model->getData());
+        $form->setValues($post->getData());
+        $this->_coreRegistry->register('Md_blog_form_data', $post);
         $form->setUseContainer(true);
         $this->setForm($form);
         return parent::_prepareForm();

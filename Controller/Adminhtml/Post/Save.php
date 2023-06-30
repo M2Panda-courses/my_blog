@@ -28,8 +28,9 @@ class Save extends \Magento\Backend\App\Action
     public function execute()
     {
         $data = $this->getRequest()->getPostValue();
+        $id = (int) $this->getRequest()->getParam('id');
         if (!$data) {
-            $this->_redirect('blog/post/addrow');
+            $this->_redirect('blog/post/#');
             return;
         }
         try {
