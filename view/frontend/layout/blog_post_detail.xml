@@ -17,7 +17,7 @@
                 </arguments>
             </block>
         </referenceContainer>
-        <referenceBlock class="Magento\Sales\Block\Reorder\Sidebar" name="sale.reorder.sidebar" template="Magento_Sales::reorder/sidebar.phtml" remove="true"/>
         <referenceBlock name="catalog.compare.sidebar" display="false"/>
+        <referenceBlock name="wishlist_sidebar" display="false"/>
     </body>
 </page>

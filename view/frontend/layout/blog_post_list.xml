@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<page layout="1column"
+<page layout="2columns-right"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
@@ -10,5 +10,19 @@
                 </arguments>
             </block>
         </referenceContainer>
+        <referenceContainer name="sidebar.main">
+            <block name="category.category.sidebar" template="Panda_Category::category/sidebar.phtml">
+                <arguments>
+                    <argument name="category_vm" xsi:type="object">Panda\Category\ViewModel\Category</argument>
+                </arguments>
+            </block>
+            <block name="tag.tag.sidebar" template="Panda_Tag::tag/sidebar.phtml">
+                <arguments>
+                    <argument name="tag_vm" xsi:type="object">Panda\Tag\ViewModel\Tag</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="catalog.compare.sidebar" display="false"/>
+        <referenceBlock name="wishlist_sidebar" display="false"/>
     </body>
 </page>
