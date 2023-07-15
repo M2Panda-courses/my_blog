@@ -8,8 +8,6 @@ use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Blog post CRUD interface.
- * @api
- * @since 1.0.0
  */
 interface PostRepositoryInterface
 {

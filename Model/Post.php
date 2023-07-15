@@ -12,9 +12,9 @@ class Post extends AbstractModel implements PostInterface
         $this->_init(ResourceModel\Post::class);
     }
 
-    public function getCreatedAt()
+    public function getPublishDate()
     {
-        return $this->getData(self::CREATED_AT);
+        return $this->getData(self::PUBLISH_DATE);
     }
 
     public function getTitle()
@@ -35,5 +35,45 @@ class Post extends AbstractModel implements PostInterface
     public function setContent($content)
     {
         $this->setData(self::CONTENT, $content);
+    }
+
+    public function getThumbnail()
+    {
+        return $this->getData(self::THUMBNAIL);
+    }
+
+    public function setThumbnail($thumbnail)
+    {
+        $this->setData(self::THUMBNAIL, $thumbnail);
+    }
+
+    public function getCategories()
+    {
+        return $this->getData(self::CATEGORIES);
+    }
+
+    public function setCategories($categories)
+    {
+        $this->setData(self::CATEGORIES, $categories);
+    }
+
+    public function getTags()
+    {
+        return $this->getData(self::TAGS);
+    }
+
+    public function setTags($tags)
+    {
+        $this->setData(self::TAGS, $tags);
+    }
+
+    public function getShortText()
+    {
+        return $this->getData(self::SHORT_TEXT);
+    }
+
+    public function setShortText($short_text)
+    {
+        $this->setData(self::SHORT_TEXT, $short_text);
     }
 }

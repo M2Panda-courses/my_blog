@@ -4,15 +4,18 @@ namespace Panda\Blog\Api\Data;
 
 /**
  * Blog post interface.
- * @api
- * @since 1.0.0
  */
 interface PostInterface
 {
     const ID = 'id';
-    const CREATED_AT = 'created_at';
+    const PUBLISH_DATE = 'publish_date';
     const TITLE = 'title';
     const CONTENT = 'content';
+    const THUMBNAIL = 'thumbnail';
+    const CATEGORIES = 'categories';
+    const TAGS = 'tags';
+    const SHORT_TEXT = 'short_text';
+
 
     /**
      * @return int
@@ -28,7 +31,7 @@ interface PostInterface
     /**
      * @return string
      */
-    public function getCreatedAt();
+    public function getPublishDate();
 
     /**
      * @return string
@@ -52,4 +55,47 @@ interface PostInterface
      */
     public function setContent($content);
 
+    /**
+     * @return string
+     */
+    public function getThumbnail();
+
+    /**
+     * @param string $thumbnail
+     * @return $this
+     */
+    public function setThumbnail($thumbnail);
+
+    /**
+     * @return string
+     */
+    public function getCategories();
+
+    /**
+     * @param string $categories
+     * @return $this
+     */
+    public function setCategories($categories);
+
+    /**
+     * @return string
+     */
+    public function getTags();
+
+    /**
+     * @param string $tags
+     * @return $this
+     */
+    public function setTags($tags);
+
+    /**
+     * @return string
+     */
+    public function getShortText();
+
+    /**
+     * @param string $shortText
+     * @return $this
+     */
+    public function setShortText($short_text);
 }
