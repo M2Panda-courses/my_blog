@@ -55,7 +55,7 @@ if ($diffInDays > 0) {
         <em class="post-category-title">
             Category:
         </em>
-        <a href="<?= $block->getUrl('tag/tag/detail', ['id' => $post->getCategories()]) ?>">
+        <a href="<?= $block->getUrl('category/category/detail', ['id' => $post->getCategories()]) ?>">
             <?= $escaper->escapeHtml($categoryVm->getCategory($post->getCategories())->getData('name')) ?>
         </a>
     </div>
