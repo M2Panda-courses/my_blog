@@ -2,16 +2,61 @@
 /** @var Magento\Framework\View\Element\Template $block */
 /** @var Magento\Framework\Escaper $escaper */
 /** @var Panda\Blog\ViewModel\Post $postVm */
+/** @var Panda\Tag\ViewModel\Tag $tagVm */
+/** @var Panda\Category\ViewModel\Category $categoryVm */
+$categoryVm = $block->getData('category_vm');
+$tagVm = $block->getData('tag_vm');
 $postVm =$block->getData('post_vm');
 $post =$postVm->getDetail();
+$tags = explode(',', $post->getTags());
+?>
+
+<?php
+$Date = $post->getPublishDate();
+$Timestamp = strtotime($Date);
+$currentTimestamp = time();
+$diff = $currentTimestamp - $Timestamp;
+$diffInHours = floor($diff / 3600);
+$diffInDays = floor($diffInHours / 24);
+
+if ($diffInDays > 0) {
+    $time = $diffInDays . " днів тому";
+} elseif ($diffInHours > 0) {
+    $time = $diffInHours . " годин тому";
+} else {
+    $time = "менше години тому";
+}
 ?>
 
 <div class="blog-post-detail">
     <h1><?= $escaper->escapeHtml($post->getTitle()) ?></h1>
+    <img src="<?php echo $post->getThumbnail(); ?>" width="300" height="200">
     <p>
         <em>
-            <?= __('Created at: %1', $post->getCreatedAt())?>
+            <?= __('Created at: %1', $time)?>
         </em>
     </p>
-    <p><?= $escaper->escapeHtml($post->getContent(), ['em', 'p', 'strong'])?></p>
+    <div class="post-tags-list">
+        <em class="tags-list-title">
+            Tags:
+        </em>
+        <?php foreach ($tags as $tag_id): ?>
+            <li>
+                <?php
+                $tag = $tagVm->getTag($tag_id);
+                ?>
+                <a href="<?= $block->getUrl('tag/tag/detail', ['id' => $tag->getData('id')]) ?>">
+                    <?= $escaper->escapeHtml($tag->getData('name')) ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </div>
+    <div class="post-category">
+        <em class="post-category-title">
+            Category:
+        </em>
+        <a href="<?= $block->getUrl('tag/tag/detail', ['id' => $post->getCategories()]) ?>">
+            <?= $escaper->escapeHtml($categoryVm->getCategory($post->getCategories())->getData('name')) ?>
+        </a>
+    </div>
 </div>

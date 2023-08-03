@@ -26,4 +26,12 @@ class PostBlock extends Template
             ScopeInterface::SCOPE_STORE
         );
     }
+
+    public function getItemsForSidebar()
+    {
+        return (int) $this->scopeConfig->getValue(
+            'config/general/sidebar_post',
+            ScopeInterface::SCOPE_STORE
+        );
+    }
 }

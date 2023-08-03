@@ -14,6 +14,10 @@
                     <label>Pagination</label>
                     <comment>How many posts will be displayed on page</comment>
                 </field>
+                <field id="sidebar_post" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Sidebar Post</label>
+                    <comment>How many posts will be displayed on sidebar</comment>
+                </field>
             </group>
         </section>
 
