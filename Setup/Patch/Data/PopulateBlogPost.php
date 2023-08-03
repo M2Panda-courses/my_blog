@@ -32,8 +32,13 @@ class PopulateBlogPost implements DataPatchInterface
 
         $post = $this->postFactory->create();
         $post->setData([
+            'thumbnail' => 'dfg',
+            'short_text' => 'dfg',
+            'categories' => 'dfg',
+            'tags' => 'dfg',
             'title' => 'Good post.',
-            'content' => 'Very good post.'
+            'content' => 'Very good post.',
+            'publish_date' => '08/11/2023 08:13:35'
         ]);
         $this->postRepository->save($post);
 

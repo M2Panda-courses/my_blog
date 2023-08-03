@@ -2,12 +2,15 @@
 
 namespace Panda\Blog\Controller\Adminhtml\Post;
 
+use Panda\Blog\Api\Data\PostRepositoryInterface;
+
 class Save extends \Magento\Backend\App\Action
 {
     /**
      * @var \Panda\Blog\Model\PostFactory
      */
     var $postFactory;
+    private PostRepositoryInterface $postRepository;
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
@@ -15,10 +18,12 @@ class Save extends \Magento\Backend\App\Action
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
+        PostRepositoryInterface $postRepository,
         \Panda\Blog\Model\PostFactory $postFactory
     ) {
         parent::__construct($context);
         $this->postFactory = $postFactory;
+        $this->postRepository = $postRepository;
     }
 
     /**
@@ -35,11 +40,11 @@ class Save extends \Magento\Backend\App\Action
         }
         try {
             $postData = $this->postFactory->create();
-            $postData->setData($data);
-            if (isset($data['id'])) {
-                $postData->setId($data['id']);
+            if (!$data['id']) {
+                $data['id'] = null;
             }
-            $postData->save();
+            $postData->setData($data);
+            $this->postRepository->save($postData);
             $this->messageManager->addSuccess(__('Post data has been successfully saved.'));
         } catch (\Exception $e) {
             $this->messageManager->addError(__($e->getMessage()));
