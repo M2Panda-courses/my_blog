@@ -1,0 +1,17 @@
+{
+    "panda_blog_post": {
+        "column": {
+            "id": true,
+            "publish_date": true,
+            "title": true,
+            "content": true,
+            "thumbnail": true,
+            "categories": true,
+            "tags": true,
+            "short_text": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
