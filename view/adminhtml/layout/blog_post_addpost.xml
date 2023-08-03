@@ -3,7 +3,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Panda\Blog\Block\Adminhtml\Post\AddPost" name="add_post" />
+            <uiComponent name="post_form"/>
         </referenceContainer>
     </body>
 </page>

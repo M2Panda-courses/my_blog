@@ -7,13 +7,19 @@ use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Panda\Blog\Api\Data\PostInterface;
 use Panda\Blog\Api\Data\PostRepositoryInterface;
+use Panda\Tag\Api\Data\TagRepositoryInterface;
+use Panda\Category\Api\Data\CategoryRepositoryInterface;
 use \Panda\Blog\Model\ResourceModel\Post as PostResourceModule;
+use \Panda\Tag\Model\TagPostFactory;
 
 class PostRepository implements PostRepositoryInterface
 {
     public function __construct(
         private PostFactory $postFactory,
         private PostResourceModule $postResourceModule,
+        private TagRepositoryInterface $tagRepository,
+        private CategoryRepositoryInterface $categoryRepository,
+        private TagPostFactory $tagPostFactory,
     ){}
 
     public function getById(int $id): PostInterface
@@ -30,11 +36,33 @@ class PostRepository implements PostRepositoryInterface
 
     public function save(PostInterface $post): PostInterface
     {
+        $new = true;
+        if ($post->getId()) {
+            $new = false;
+        }
+        $tags = $post->getTags();
+        if (is_array($tags)) {
+            $tags = implode(',', $tags);
+        }
+        $post->setTags($tags);
         try{
             $this->postResourceModule->save($post);
         } catch (\Exception $exception){
             throw new CouldNotSaveException(__($exception->getMessage()));
         }
+
+        if ($new) {
+            $tags = $post->getTags();
+            $tags = explode(',', $tags);
+            foreach ($tags as $tag_id) {
+                $tag = $this->tagRepository->getById((int)$tag_id);
+                $tagPost = $this->tagPostFactory->create();
+                $tagPost->setTagId((int) $tag->getId());
+                $tagPost->setPostId((int) $post->getId());
+                $tagPost->save();
+            }
+        }
+
 
         return $post;
     }

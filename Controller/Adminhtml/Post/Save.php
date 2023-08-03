@@ -40,9 +40,9 @@ class Save extends \Magento\Backend\App\Action
         }
         try {
             $postData = $this->postFactory->create();
-            if (!$data['id']) {
-                $data['id'] = null;
-            }
+//            if (!isset($data['id'])) {
+//                $data['id'] = null;
+//            }
             $postData->setData($data);
             $this->postRepository->save($postData);
             $this->messageManager->addSuccess(__('Post data has been successfully saved.'));
