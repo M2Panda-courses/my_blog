@@ -7,13 +7,25 @@
             <block name="blog.post.detail" template="Panda_Blog::post/detail.phtml">
                 <arguments>
                     <argument name="post_vm" xsi:type="object">Panda\Blog\ViewModel\Post</argument>
+                    <argument name="tag_vm" xsi:type="object">Panda\Tag\ViewModel\Tag</argument>
+                    <argument name="category_vm" xsi:type="object">Panda\Category\ViewModel\Category</argument>
                 </arguments>
             </block>
         </referenceContainer>
         <referenceContainer name="sidebar.main">
-            <block name="blog.post.sidebar" template="Panda_Blog::post/sidebar.phtml">
+            <block class="Panda\Blog\Block\PostBlock" name="blog.post.sidebar" template="Panda_Blog::post/sidebar.phtml">
                 <arguments>
                     <argument name="post_vm" xsi:type="object">Panda\Blog\ViewModel\Post</argument>
+                </arguments>
+            </block>
+            <block name="category.category.sidebar" template="Panda_Category::category/sidebar.phtml">
+                <arguments>
+                    <argument name="category_vm" xsi:type="object">Panda\Category\ViewModel\Category</argument>
+                </arguments>
+            </block>
+            <block name="tag.tag.sidebar" template="Panda_Tag::tag/sidebar.phtml">
+                <arguments>
+                    <argument name="tag_vm" xsi:type="object">Panda\Tag\ViewModel\Tag</argument>
                 </arguments>
             </block>
         </referenceContainer>

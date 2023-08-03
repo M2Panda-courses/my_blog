@@ -19,7 +19,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
      */
     protected function _construct()
     {
-        $this->_objectId = 'post_id';
+        $this->_objectId = 'id';
         $this->_blockGroup = 'Panda_Blog';
         $this->_controller = 'adminhtml_post';
         parent::_construct();

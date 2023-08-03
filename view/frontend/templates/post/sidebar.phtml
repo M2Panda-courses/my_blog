@@ -1,14 +1,15 @@
 <?php
-/** @var Magento\Framework\View\Element\Template $block */
+/** @var Panda\Blog\Block\PostBlock $block */
 /** @var Magento\Framework\Escaper $escaper */
 /** @var Panda\Blog\ViewModel\Post $postVm */
 $postVm =$block->getData('post_vm');
+$limit = $block->getItemsForSidebar();
 ?>
 
 <div class="blog-post-sidebar">
     <p><strong><?= __('Other blog posts') ?></strong></p>
     <ul>
-        <?php foreach ($postVm->getList() as $post): ?>
+        <?php foreach (array_slice($postVm->getList(), -$limit) as $post): ?>
             <li>
                 <a href="<?= $block->getUrl('blog/post/detail', ['id' => $post->getData('id')]) ?>">
                     <?= $escaper->escapeHtml($post->getData('title')) ?>
