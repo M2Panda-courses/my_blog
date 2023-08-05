@@ -64,28 +64,6 @@
                 </item>
             </argument>
         </field>
-
-
-<!--        <field name="thumbnail" formElement="fileUploader">-->
-<!--            <settings>-->
-<!--                <label translate="true">thumbnail</label>-->
-<!--                <elementTmpl>ui/form/element/uploader/image</elementTmpl>-->
-<!--                <visible>true</visible>-->
-<!--            </settings>-->
-<!--            <formElements>-->
-<!--                <imageUploader>-->
-<!--                    <settings>-->
-<!--                        <uploaderConfig>-->
-<!--                            <param xsi:type="url" name="url" path="*/*/imageUpload"/>-->
-<!--                        </uploaderConfig>-->
-<!--                        <allowedExtensions>jpeg jpg png</allowedExtensions>-->
-<!--                        <maxFileSize>654654654</maxFileSize>-->
-<!--                    </settings>-->
-<!--                </imageUploader>-->
-<!--            </formElements>-->
-<!--        </field>-->
-
-
         <field name="thumbnail">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
