@@ -1,0 +1,18 @@
+<?php
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Magento\Framework\Escaper $escaper */
+/** @var Panda\Category\ViewModel\Category $categoryVm */
+$categoryVm = $block->getData('category_vm');
+?>
+
+<div class="category-category-sidebar">
+    <p><strong><?= __('Categories') ?></strong></p>
+    <ul>
+        <?php foreach ($categoryVm->getList() as $category): ?>
+            <li>
+                <a href="<?= $block->getUrl('category/category/detail', ['id' => $category->getData('id')]) ?>">
+                    <?= $escaper->escapeHtml($category->getData('name')) ?>
+                </a></li>
+        <?php endforeach ?>
+    </ul>
+</div>

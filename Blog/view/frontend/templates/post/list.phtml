@@ -1,0 +1,26 @@
+<?php
+/** @var Panda\Blog\Block\PostBlock $block */
+/** @var Magento\Framework\Escaper $escaper */
+/** @var Panda\Blog\ViewModel\Post $postVm */
+$postVm = $block->getData('post_vm');
+$pagerBlock = $block->getChildBlock('block_pager');
+$limit = $block->getItemsPerPage();
+$collection = $postVm->getPosts($limit);
+?>
+
+<div class="blog-post-list">
+    <h1><?= __('Blog posts') ?></h1>
+    <div class="post-grid-container">
+        <?php foreach ($collection as $post): ?>
+            <div class="post-grid-item">
+                <img src="<?php echo $post->getThumbnaul(); ?>" alt="1">
+                <a href="<?= $block->getUrl('blog/post/detail', ['id' => $post->getData('id')]) ?>">
+                    <?= $escaper->escapeHtml($post->getData('title')) ?>
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <?php if ($pagerBlock): ?>
+        <?= $postVm->getPager($collection, $pagerBlock) ?>
+    <?php endif; ?>
+</div>

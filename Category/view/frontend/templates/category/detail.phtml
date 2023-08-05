@@ -1,0 +1,26 @@
+<?php
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Magento\Framework\Escaper $escaper */
+/** @var Panda\Category\ViewModel\Category $categoryVm */
+/** @var DateTime $dateTime */
+/** @var DateTime $currentTime */
+$categoryVm = $block->getData('category_vm');
+$category = $categoryVm->getDetail();
+$posts = $categoryVm->getPosts();
+?>
+
+<div class="category-category-detail">
+    <h1><?= $escaper->escapeHtml($category->getName()) ?></h1>
+    <p>
+        <em>
+            Posts:
+        </em>
+        <?php foreach ($posts as $post): ?>
+            <li>
+                <a href="<?= $block->getUrl('blog/post/detail', ['id' => $post->getData('id')]) ?>">
+                    <?= $escaper->escapeHtml($post->getData('title')) ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </p>
+</div>

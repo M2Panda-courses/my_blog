@@ -1,0 +1,19 @@
+& when (@media-common = true) {
+
+    @tag-popularity: 5;
+
+    #tagCloud {
+        width:400px; background-color: #ffe300; text-align:center; padding:5px;
+        overflow:auto; font-size:150%;
+    }
+    #tagList { margin:0; padding:0; }
+    #tagList li {
+        list-style-type:none; float:left; margin:0 10px; height:35px;
+    }
+    #tagList li a { text-decoration:none; color: #bb08ec; height: 70px; font-size: calc(10px + (@tag-popularity * 2px)); }
+}
+
+
+
+
+
