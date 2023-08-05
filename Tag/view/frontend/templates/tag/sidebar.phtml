@@ -1,0 +1,22 @@
+<?php
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Magento\Framework\Escaper $escaper */
+/** @var Panda\Tag\ViewModel\Tag $tagVm */
+$tagVm = $block->getData('tag_vm');
+?>
+
+
+
+
+<div class="tag-sidebar" id="tagCloud">
+    <p><strong><?= __('Tags') ?></strong></p>
+    <ul id="tagList">
+        <?php foreach ($tagVm->getList() as $tag): ?>
+            <li>
+                <a style="font-size: calc(10px + <?php echo $tag->getData('popularity'); ?> * 1px"
+                   href="<?= $block->getUrl('tag/tag/detail', ['id' => $tag->getData('id')]) ?>">
+                    <?= $escaper->escapeHtml($tag->getData('name')) ?>
+                </a></li>
+        <?php endforeach ?>
+    </ul>
+</div>

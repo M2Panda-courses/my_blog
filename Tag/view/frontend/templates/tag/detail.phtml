@@ -1,0 +1,26 @@
+<?php
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Magento\Framework\Escaper $escaper */
+/** @var Panda\Tag\ViewModel\Tag $tagVm */
+/** @var DateTime $dateTime */
+/** @var DateTime $currentTime */
+$tagVm = $block->getData('tag_vm');
+$tag = $tagVm->getDetail();
+$posts = $tagVm->getPosts();
+?>
+
+<div class="tag-detail">
+    <h1><?= $escaper->escapeHtml($tag->getName()) ?></h1>
+    <p>
+        <em>
+            Posts:
+        </em>
+        <?php foreach ($posts as $post): ?>
+            <li>
+                <a href="<?= $block->getUrl('blog/post/detail', ['id' => $post->getData('id')]) ?>">
+                    <?= $escaper->escapeHtml($post->getData('title')) ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </p>
+</div>

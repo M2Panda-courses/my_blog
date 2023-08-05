@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page layout="1column"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="main">
+            <block name="tag.list" template="Panda_Tag::tag/list.phtml">
+                <arguments>
+                    <argument name="tag_vm" xsi:type="object">Panda\Tag\ViewModel\Tag</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
